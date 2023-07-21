@@ -1,0 +1,43 @@
+{% extends 'html/base.html' %}
+{% block title %}
+    HomePage
+{% endblock %}
+
+{% block index %}
+    {% load crispy_forms_tags %}
+    {% load static %}
+    {% if city %}
+
+    <div id = "textBlock" class="container">
+        <img src="{% static 'weath.svg' %}" width = "20%" class="d-block m-auto">
+        <div class="d-flex justify-content-center m-4">
+               <h2> Weather in {{ city }} is :</h2>
+        </div>
+    </div>
+
+    <div id = "Weather" class="d-flex justify-content-center">
+        <div class="card justify-content-center" style="width: 18rem;">
+            <div class="card-header">
+                <img src="{% static "city.png" %}" width="25px"> City : {{ city }}
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><img src="{% static "temp.svg" %}" width="25px"> Temperature : {{ temperature }}</li>
+                <li class="list-group-item"><img src="{% static "wind.svg" %}" width="25px"> Wind : {{ wind }}</li>
+                <li class="list-group-item"><img src="{% static "status.svg" %}" width="25px"> Status : {{ status }}</li>
+            </ul>
+        </div>
+    </div>
+
+    {% else %}
+        <div class="container mt-5">
+            <center><h1 class="d-block" >Weather App</h1></center>
+            <form action="" method="POST" xmlns="http://www.w3.org/1999/html">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary" type="Submit" name="submit" value="Submit"/>Submit</button>
+            </form>
+        </div>
+
+    {% endif %}
+{% endblock %}
