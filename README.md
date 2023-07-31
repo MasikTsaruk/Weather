@@ -1,7 +1,11 @@
 # Weather
 # To run this app:
 
-create virtual environment
+
+Open directory with Project, then:
+
+
+create virtual environment:
 
 ```bash
   python -m venv venv
